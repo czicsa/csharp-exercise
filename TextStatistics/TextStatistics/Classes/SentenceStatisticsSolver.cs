@@ -47,6 +47,9 @@ namespace TextStatistics.Classes
                 }
             }
 
+            //elég az egyedi szavak listájával összehasonlítani
+            var distinctWords = words.Distinct().ToList();
+
             //összeszedjük, hogy hány darab olyan szó van, amit nem tartalmaz más szó
             var sourceWordIndex = 0;
             do
@@ -59,7 +62,7 @@ namespace TextStatistics.Classes
                 do
                 {
                     //kivesszük a tartalmazó szót
-                    var targetWord = words[targetWordIndex];
+                    var targetWord = distinctWords[targetWordIndex];
 
                     //akkor érdemes megnézni, hogy benne van-e egyik a másikban, ha nem ugyanaz, és a tartalmazó szó hosszabb, mint a vizsgált szó
                     if (sourceWordIndex != targetWordIndex && sourceWord.Length < targetWord.Length)
@@ -73,7 +76,7 @@ namespace TextStatistics.Classes
 
                     targetWordIndex++;
                 //addig lépkedünk, míg nincs olyan szó, ami tartalmazná a vizsgált szót, vagy elfogynak a tartalmazó szavak
-                } while (!isSourceContainedByTarget && targetWordIndex < words.Count);
+                } while (!isSourceContainedByTarget && targetWordIndex < distinctWords.Count);
 
                 //ha nem találtunk tartalmazó szót, akkor növeljük a számlálót
                 if (!isSourceContainedByTarget)

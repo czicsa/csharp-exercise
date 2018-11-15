@@ -40,7 +40,7 @@ namespace TextStatistics
                 }
 
             } while (string.IsNullOrWhiteSpace(filePath));
-
+            
             Console.WriteLine("Feldolgozás.");
 
             var sentences = FileReader.GetSentencesFromFile(filePath);
