@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TextStatistics</name>
+    </assembly>
+    <members>
+        <member name="T:TextStatistics.Classes.FileReader">
+            <summary>
+            Fájlbeolvasással foglalkozó osztály
+            </summary>
+        </member>
+        <member name="M:TextStatistics.Classes.FileReader.GetSentencesFromFile(System.String)">
+            <summary>
+            Egy fájlból kiolvassa a mondatokat
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TextStatistics.Classes.FileReader.AddNewWord(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Hozzáad egy szót a mondta szavaihoz, ha nem üres szó
+            </summary>
+            <param name="words"></param>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TextStatistics.Classes.FileReader.AddNewSentence(System.Collections.Generic.List{TextStatistics.Data.SentenceData},TextStatistics.Data.SentenceData)">
+            <summary>
+            Hozzáad egy mondatot a mondatokhoz, ha van benne szó
+            </summary>
+            <param name="sentences"></param>
+            <param name="sentence"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TextStatistics.Classes.FileReader.AddCharacterToWord(System.String,System.Char)">
+            <summary>
+            Hozzáad egy karaktert a szóhoz, ha nem különleges karakter
+            </summary>
+            <param name="word"></param>
+            <param name="character"></param>
+        </member>
+        <member name="T:TextStatistics.Classes.HtmlGenerator">
+            <summary>
+            Html generáló osztály
+            </summary>
+        </member>
+        <member name="M:TextStatistics.Classes.HtmlGenerator.GenerateHtmlFromSentenceCounts(System.Collections.Generic.List{TextStatistics.Data.WordCountData})">
+            <summary>
+            Html generálása
+            </summary>
+            <param name="wordCountDataList"></param>
+        </member>
+        <member name="T:TextStatistics.Classes.SentenceStatisticsSolver">
+            <summary>
+            Statisztikákat készítő osztály
+            </summary>
+        </member>
+        <member name="M:TextStatistics.Classes.SentenceStatisticsSolver.GetSentenceStatistics(System.Collections.Generic.List{TextStatistics.Data.SentenceData})">
+            <summary>
+            Visszaadja a mondatok a statisztikáját
+            </summary>
+            <param name="sentences"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TextStatistics.Data.SentenceData">
+            <summary>
+            Egy mondat osztálya
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Data.SentenceData.Words">
+            <summary>
+            Szavak a mondatban
+            </summary>
+        </member>
+        <member name="M:TextStatistics.Data.SentenceData.#ctor">
+            <summary>
+            Mondat konstruktora
+            </summary>
+        </member>
+        <member name="T:TextStatistics.Data.SentenceStatisticsData">
+            <summary>
+            Mondatok alapján készített statisztika osztálya
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Data.SentenceStatisticsData.CountOfWordsNotContainedInOtherWords">
+            <summary>
+            Azons szavak száma, amelyeket nem tartalmaz másik szó
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Data.SentenceStatisticsData.WordCountList">
+            <summary>
+            Olyan osztályok listája, amelyek megmutatják, hogy adott darabszámú mondatból hány darab van
+            </summary>
+        </member>
+        <member name="M:TextStatistics.Data.SentenceStatisticsData.#ctor">
+            <summary>
+            Statisztika konstruktora
+            </summary>
+        </member>
+        <member name="T:TextStatistics.Data.WordCountData">
+            <summary>
+            Egy olyan osztály, ami megmutatja, hogy adott darabszámú mondatból hány darab van
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Data.WordCountData.CountOfWords">
+            <summary>
+            Szavak száma a mondatban
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Data.WordCountData.SentenceCount">
+            <summary>
+            Hány darab adott szószámú mondat van
+            </summary>
+        </member>
+        <member name="T:TextStatistics.Program">
+            <summary>
+            A futtatandó program
+            </summary>
+        </member>
+        <member name="M:TextStatistics.Program.Main(System.String[])">
+            <summary>
+            A program belépési pontja
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:TextStatistics.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:TextStatistics.Properties.Resources.sample">
+             <summary>
+               Looks up a localized string similar to &lt;html&gt;
+            	&lt;head&gt;
+            		&lt;link rel=&quot;stylesheet&quot; href=&quot;libs/bootstrap.min.css&quot;&gt;
+            	&lt;/head&gt;
+            	&lt;body&gt;
+            		&lt;div class=&quot;row&quot;&gt;
+            			&lt;div class=&quot;col-xs-2&quot;&gt;
+            				&lt;table class=&quot;table&quot;&gt;
+            				  &lt;thead&gt;
+            					&lt;tr&gt;
+            					  &lt;th&gt;Mondatban található szavak száma&lt;/th&gt;
+            					  &lt;th&gt;Mondatok száma&lt;/th&gt;
+            					&lt;/tr&gt;
+            				  &lt;/thead&gt;
+            				  &lt;tbody&gt;
+            					{{tableContent}}
+            				  &lt;/tbody&gt;
+            				&lt;/table&gt;
+            			&lt;/div&gt;
+            		&lt;/div&gt;
+            	&lt;/body&gt;
+            &lt;/html&gt;.
+             </summary>
+        </member>
+    </members>
+</doc>
