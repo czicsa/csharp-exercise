@@ -1,21 +1,31 @@
-<html>
+<html lang="hu">
 	<head>
+		<meta charset="utf-8" />
+		<title>Andrássy-10.D statisztika</title>
+		<link href="taki.ICO" rel="shortcut icon">
 		<link rel="stylesheet" href="Files/bootstrap.min.css">
 	</head>
 	<body>
-		<div class="row">
-			<div class="col-xs-2">
-				<table class="table">
-				  <thead>
-					<tr>
-					  <th>Mondatban található szavak száma</th>
-					  <th>Mondatok száma</th>
-					</tr>
-				  </thead>
-				  <tbody>
-					{{tableContent}}
-				  </tbody>
-				</table>
+		<div style="margin-left:auto;margin-right:auto">
+			<div>
+				<div align="center">
+					<p>&nbsp;</p>
+					<p style="font-size:24px">Andrássy-10.D</p>
+					<p style="font-size:24px">Statisztika</p>
+					<p style="font-size:24px">fájl neve: <span style="color:#900">{{filename}}</span></p>
+					<table class="table table-condensed table table-striped" style="width: 500px">
+						<thead>
+							<tr>
+								<th style="width: 300px">Mondatban található szavak száma</th>
+								<th style="width: 200px">Mondatok száma</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{tableContent}}
+						</tbody>
+					</table>
+					<p>&nbsp;</p>
+				</div>
 			</div>
 		</div>
 	</body>

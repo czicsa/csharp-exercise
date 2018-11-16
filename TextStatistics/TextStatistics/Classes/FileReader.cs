@@ -127,7 +127,7 @@ namespace TextStatistics.Classes
         /// <param name="character"></param>
         private static string AddCharacterToWord(string word, char character)
         {
-            if (character != CR && character != LF && character != ',' && character != '-' && character != '"' && character != '\'' && character != '+')
+            if (character != CR && character != LF && character != ',' && character != '-' && character != '"' && character != '\'' && character != '+' && character != ';' && character != ':')
             {
                 word += character;
             }
