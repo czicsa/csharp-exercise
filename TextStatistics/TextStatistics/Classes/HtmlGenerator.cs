@@ -13,13 +13,15 @@ namespace TextStatistics.Classes
         /// <summary>
         /// Html generálása
         /// </summary>
+        /// <param name="filePath"></param>
         /// <param name="wordCountDataList"></param>
-        public static void GenerateHtmlFromSentenceCounts(List<WordCountData> wordCountDataList)
+        public static void GenerateHtmlFromSentenceCounts(string filePath, List<WordCountData> wordCountDataList)
         {
-            var filename = "wordcount.html";
+            //elkérjük a fájlnevet az elérési útvonalból
+            var filename = Path.GetFileName(filePath);
 
             //létrehozzuk, vagy ha már létezik, felülírjuk a fájlt
-            using (StreamWriter writer = new StreamWriter(filename, false))
+            using (StreamWriter writer = new StreamWriter("wordcount.html", false))
             {
                 var sampleHtml = Properties.Resources.sample;
 
@@ -31,6 +33,7 @@ namespace TextStatistics.Classes
 
                 //beillesztjük a mezőket a sablonba
                 writer.WriteLine(sampleHtml.Replace("{{filename}}", filename)
+                                           .Replace("{{sentenceCount}}", wordCountDataList.Sum(x => x.SentenceCount).ToString())
                                            .Replace("{{tableContent}}", tableContentHtml));
 
                 writer.Close();

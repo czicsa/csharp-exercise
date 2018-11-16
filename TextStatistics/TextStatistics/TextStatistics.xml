@@ -44,10 +44,11 @@
             Html generáló osztály
             </summary>
         </member>
-        <member name="M:TextStatistics.Classes.HtmlGenerator.GenerateHtmlFromSentenceCounts(System.Collections.Generic.List{TextStatistics.Data.WordCountData})">
+        <member name="M:TextStatistics.Classes.HtmlGenerator.GenerateHtmlFromSentenceCounts(System.String,System.Collections.Generic.List{TextStatistics.Data.WordCountData})">
             <summary>
             Html generálása
             </summary>
+            <param name="filePath"></param>
             <param name="wordCountDataList"></param>
         </member>
         <member name="T:TextStatistics.Classes.SentenceStatisticsSolver">

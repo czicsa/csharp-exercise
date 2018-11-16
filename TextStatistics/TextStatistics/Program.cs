@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using TextStatistics.Classes;
 
 namespace TextStatistics
@@ -37,6 +38,16 @@ namespace TextStatistics
                 {
                     Console.WriteLine("Kérem adja meg a fájl elérési útvonalát:");
                     filePath = Console.ReadLine();
+
+                    if (!string.IsNullOrWhiteSpace(filePath))
+                    {
+                        //megvizsgáljuk, hogy létezik-e a fájl, ha nem értesítjük a felhasználót
+                        if (!File.Exists(filePath))
+                        {
+                            Console.WriteLine("A fájl nem található!");
+                            filePath = "";
+                        }
+                    }
                 }
 
             } while (string.IsNullOrWhiteSpace(filePath));
@@ -51,7 +62,7 @@ namespace TextStatistics
 
             Console.WriteLine("Statisztikák kiszámolva.");
 
-            HtmlGenerator.GenerateHtmlFromSentenceCounts(sentenceStatistics.WordCountList);
+            HtmlGenerator.GenerateHtmlFromSentenceCounts(filePath, sentenceStatistics.WordCountList);
 
             Console.WriteLine("HTML fájl elkészült.");
 

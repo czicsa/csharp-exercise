@@ -21,11 +21,6 @@ namespace TextStatistics.Classes
         /// <returns></returns>
         public static List<SentenceData> GetSentencesFromFile(string path)
         {
-            //megvizsgáljuk, hogy létezik-e a fájl, ha nem létezik kivételt dobunk
-            if (!File.Exists(path))
-            {
-                throw new Exception("A megadott útvonal nem található!");
-            }
 
             var result = new List<SentenceData>();
 
