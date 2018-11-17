@@ -65,7 +65,7 @@ namespace TextStatistics.Classes
                     var targetWord = distinctWords[targetWordIndex];
 
                     //akkor érdemes megnézni, hogy benne van-e egyik a másikban, ha nem ugyanaz, és a tartalmazó szó hosszabb, mint a vizsgált szó
-                    if (sourceWordIndex != targetWordIndex && sourceWord.Length < targetWord.Length)
+                    if (sourceWordIndex != targetWordIndex && sourceWord.Length <= targetWord.Length)
                     {
                         //ha benne van a vizsgált szó a tartalmazóban, akkor ez a szó nem számolható bele a végeredménybe
                         if (targetWord.IndexOf(sourceWord) != -1)
