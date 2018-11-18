@@ -47,9 +47,6 @@ namespace TextStatistics.Classes
                 }
             }
 
-            //elég az egyedi szavak listájával összehasonlítani
-            var distinctWords = words.Distinct().ToList();
-
             //összeszedjük, hogy hány darab olyan szó van, amit nem tartalmaz más szó
             var sourceWordIndex = 0;
             do
@@ -57,14 +54,15 @@ namespace TextStatistics.Classes
                 //kivesszük a vizsgált szót
                 var sourceWord = words[sourceWordIndex];
                 var isSourceContainedByTarget = false;
-                var targetWordIndex = 1;
+                var targetWordIndex = 0;
 
                 do
                 {
                     //kivesszük a tartalmazó szót
-                    var targetWord = distinctWords[targetWordIndex];
+                    var targetWord = words[targetWordIndex];
 
-                    //akkor érdemes megnézni, hogy benne van-e egyik a másikban, ha nem ugyanaz, és a tartalmazó szó hosszabb, mint a vizsgált szó
+                    //akkor érdemes megnézni, hogy benne van-e egyik a másikban, ha nem ugyanaz, és a tartalmazó szó legalább olyan hosszú, mint a vizsgált szó
+                    //a részhalmaz definíciója szerint minden halmaz önmagának is részhalmaza, ezért a szóismétlések is tartalmazzák egymást
                     if (sourceWordIndex != targetWordIndex && sourceWord.Length <= targetWord.Length)
                     {
                         //ha benne van a vizsgált szó a tartalmazóban, akkor ez a szó nem számolható bele a végeredménybe
@@ -76,7 +74,7 @@ namespace TextStatistics.Classes
 
                     targetWordIndex++;
                 //addig lépkedünk, míg nincs olyan szó, ami tartalmazná a vizsgált szót, vagy elfogynak a tartalmazó szavak
-                } while (!isSourceContainedByTarget && targetWordIndex < distinctWords.Count);
+                } while (!isSourceContainedByTarget && targetWordIndex < words.Count);
 
                 //ha nem találtunk tartalmazó szót, akkor növeljük a számlálót
                 if (!isSourceContainedByTarget)
