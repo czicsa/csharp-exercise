@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TextStatistics.Data;
 
@@ -66,7 +67,8 @@ namespace TextStatistics.Classes
                     if (sourceWordIndex != targetWordIndex && sourceWord.Length <= targetWord.Length)
                     {
                         //ha benne van a vizsgált szó a tartalmazóban, akkor ez a szó nem számolható bele a végeredménybe
-                        if (targetWord.IndexOf(sourceWord) != -1)
+                        //ékezetes betűk miatt szükség van az ordinális string összehasonlításra
+                        if (targetWord.IndexOf(sourceWord, StringComparison.Ordinal) != -1)
                         {
                             isSourceContainedByTarget = true;
                         }
