@@ -44,7 +44,7 @@ namespace TextStatistics.Classes
                 //elrakjuk a szavakat
                 foreach (var word in sentence.Words)
                 {
-                    words.Add(word.ToLower());
+                    words.Add(word);
                 }
             }
 
